@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DiscoverRouteImport } from './routes/discover'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MatchesRouteImport } from './routes/matches'
+import { Route as SkillRouteImport } from './routes/skill'
+import { Route as ClaimTokenRouteImport } from './routes/claim.$token'
+import { Route as MatchesIdRouteImport } from './routes/matches_.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverRoute = DiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatchesRoute = MatchesRouteImport.update({
+  id: '/matches',
+  path: '/matches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillRoute = SkillRouteImport.update({
+  id: '/skill',
+  path: '/skill',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaimTokenRoute = ClaimTokenRouteImport.update({
+  id: '/claim/$token',
+  path: '/claim/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatchesIdRoute = MatchesIdRouteImport.update({
+  id: '/matches_/$id',
+  path: '/matches/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
+  '/matches': typeof MatchesRoute
+  '/skill': typeof SkillRoute
+  '/claim/$token': typeof ClaimTokenRoute
+  '/matches/$id': typeof MatchesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
+  '/matches': typeof MatchesRoute
+  '/skill': typeof SkillRoute
+  '/claim/$token': typeof ClaimTokenRoute
+  '/matches/$id': typeof MatchesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
+  '/matches': typeof MatchesRoute
+  '/skill': typeof SkillRoute
+  '/claim/$token': typeof ClaimTokenRoute
+  '/matches_/$id': typeof MatchesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/discover'
+    | '/login'
+    | '/matches'
+    | '/skill'
+    | '/claim/$token'
+    | '/matches/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/discover'
+    | '/login'
+    | '/matches'
+    | '/skill'
+    | '/claim/$token'
+    | '/matches/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/discover'
+    | '/login'
+    | '/matches'
+    | '/skill'
+    | '/claim/$token'
+    | '/matches_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRoute
+  DiscoverRoute: typeof DiscoverRoute
+  LoginRoute: typeof LoginRoute
+  MatchesRoute: typeof MatchesRoute
+  SkillRoute: typeof SkillRoute
+  ClaimTokenRoute: typeof ClaimTokenRoute
+  MatchesIdRoute: typeof MatchesIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover': {
+      id: '/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof DiscoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matches': {
+      id: '/matches'
+      path: '/matches'
+      fullPath: '/matches'
+      preLoaderRoute: typeof MatchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skill': {
+      id: '/skill'
+      path: '/skill'
+      fullPath: '/skill'
+      preLoaderRoute: typeof SkillRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claim/$token': {
+      id: '/claim/$token'
+      path: '/claim/$token'
+      fullPath: '/claim/$token'
+      preLoaderRoute: typeof ClaimTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matches_/$id': {
+      id: '/matches_/$id'
+      path: '/matches/$id'
+      fullPath: '/matches/$id'
+      preLoaderRoute: typeof MatchesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRoute,
+  DiscoverRoute: DiscoverRoute,
+  LoginRoute: LoginRoute,
+  MatchesRoute: MatchesRoute,
+  SkillRoute: SkillRoute,
+  ClaimTokenRoute: ClaimTokenRoute,
+  MatchesIdRoute: MatchesIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

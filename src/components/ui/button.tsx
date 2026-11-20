@@ -9,6 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        cosmic: "cosmic-button text-primary-foreground shadow",
+        like: "bg-primary/15 text-primary border border-primary/40 hover:bg-primary/25",
+        pass: "bg-secondary text-muted-foreground border border-border hover:text-foreground",
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:

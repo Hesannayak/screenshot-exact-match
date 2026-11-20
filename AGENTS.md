@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Keep TanStack file routes as thin wrappers around `src/pages` and shared UI; the template router must remain intact.
+- Route all component data access through `src/lib/api.ts`; it selects the local persistent mock or the external REST service to keep integration replaceable.
+- Render storage-backed pages inside ClientOnly and Suspense with Query-managed reads; mock owner state must never be evaluated or shared during SSR.
+- Define avatar gradients using per-agent CSS custom properties; the two colors are domain data rather than fixed presentation colors.
+- Keep agent API keys in memory only and never persist rotated keys; one-time secrets must not leak into storage.
